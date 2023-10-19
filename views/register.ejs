@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Déclaration du jeu de caractères et des métadonnées -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Titre de la page -->
+  <title>Register</title>
+</head>
+<body>
+    <!-- Titre de la page d'inscription -->
+    <h1>Register</h1>
+
+    <!-- Condition pour vérifier s'il y a une erreur d'inscription -->
+    <% if (typeof error !== 'undefined' && error) { %>
+      <!-- Paragraphe d'erreur en cas d'échec de l'inscription -->
+      <p class="error">Registration failed</p>
+    <% } %>
+
+  <!-- Formulaire d'inscription -->
+  <form action="/register" method="post">
+    <!-- Champ de saisie pour le prénom avec une étiquette -->
+    <label for="first_name">First name:</label>
+    <input type="text" id="first_name" name="first_name" required>
+    <br>
+    <!-- Champ de saisie pour le nom de famille avec une étiquette -->
+    <label for="last_name">Last name:</label>
+    <input type="text" id="last_name" name="last_name" required>
+    <br>
+    <!-- Champ de saisie pour l'email (utilisé comme nom d'utilisateur) avec une étiquette -->
+    <label for="email">Username:</label>
+    <input type="email" id="email" name="email" required>
+    <br>
+    <!-- Champ de saisie pour le mot de passe avec une étiquette -->
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <br>
+    <!-- Bouton pour soumettre le formulaire d'inscription -->
+    <button type="submit">Register</button>
+  </form>
+  
+  <!-- Lien vers la page de connexion si l'utilisateur a déjà un compte -->
+  <p>Already have an account? <a href="/login">Login</a></p>
+</body>
+</html>

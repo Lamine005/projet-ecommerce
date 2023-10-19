@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Déclaration du jeu de caractères et des métadonnées -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Titre de la page -->
+    <title>Liste de Produits</title>
+    <!-- Inclusion du script PayPal pour le paiement (client-id et devise) -->
+    <script src="https://www.paypal.com/sdk/js?client-id=Afieu65J0dq9rtJq1JvScpDFEsEcGfZvW4D1SpAG29Iq0a7QIHRCLNqia5Rf65w_F9Vw8a_0ygewA_nu_&currency=CAD"></script>
+    <!-- Inclusion du script payment.js (emplacement local) -->
+    <script src="/Users/laminedjobo/Desktop/SiteWebServeur/payment.js"></script>
+</head>
+<body>
+    <!-- Liens de navigation -->
+    <a href="/">Accueil</a>
+    <a href="/">Déconnexion</a>
+    <div>
+        <!-- Titre de la section des produits -->
+        Produits:
+        <!-- Liste non ordonnée pour afficher les produits -->
+        <ul>
+            <!-- Boucle for pour itérer à travers les produits -->
+            <% for (let i = 0; i < resultats.length; i++) { %>
+                <!-- Élément de liste pour chaque produit -->
+                <li>
+                    <!-- Sous-titre pour afficher le nom du produit -->
+                    <h3>Nom : <%= resultats[i].name %></h3>
+                    <!-- Paragraphe pour afficher la description du produit -->
+                    <p>Description : <%= resultats[i].description %></p>
+                    <!-- Paragraphe pour afficher le prix du produit -->
+                    <p>Prix : <%= resultats[i].price %></p>
+                    <!-- Paragraphe pour afficher le SKU du produit -->
+                    <p>SKU : <%= resultats[i].sku %></p>
+                    <!-- Paragraphe pour afficher le poids du produit -->
+                    <p>Poids : <%= resultats[i].weight %></p>
+                    <!-- Image du produit avec URL provenant de l'objet resultats -->
+                    <img src="<%= resultats[i].image_url %>" alt="<%= resultats[i].name %>">
+                    <!-- Formulaire pour ajouter le produit au panier -->
+                    <form action="/ejs" method="post">
+                        <!-- Champ caché pour l'ID du produit -->
+                        <input type="hidden" name="productId" value="<%= resultats[i].product_id %>">
+                        <!-- Champ pour la quantité -->
+                        <input type="number" name="quantity" value="1" min="1">
+                        <!-- Bouton pour ajouter au panier -->
+                        <button type="submit">Ajouter au panier</button>
+                    </form>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+    <br>
+    <hr>
+    <br>
+    
+    <div>
+        <!-- Titre de la section du panier de produits -->
+        Panier produits :
+        <!-- Liste non ordonnée pour afficher les produits dans le panier -->
+        <ul>
+          <!-- Boucle for pour itérer à travers les produits dans le panier -->
+          <% for (let i=0; i<sessionPanier.length; i++){%>
+            <!-- Élément de liste pour chaque produit dans le panier -->
+            <li>
+              <!-- Sous-titre pour afficher le nom du produit -->
+              <h3>Nom : <%= sessionPanier[i].name %></h3>
+              <!-- Paragraphe pour afficher la description du produit -->
+              <p>Description : <%= sessionPanier[i].description %></p>
+              <!-- Paragraphe pour afficher le prix du produit -->
+              <p>Prix : <%= sessionPanier[i].price %></p>
+              <!-- Paragraphe pour afficher la quantité du produit -->
+              <p>Quantité : <%= sessionPanier[i].quantity %></p> 
+              <!-- Paragraphe pour afficher le SKU du produit -->
+              <p>SKU : <%= sessionPanier[i].sku %></p>
+              <!-- Paragraphe pour afficher le poids du produit -->
+              <p>Poids : <%= sessionPanier[i].weight %></p>
+              <!-- Image du produit dans le panier avec URL provenant de l'objet sessionPanier -->
+              <img src="<%= sessionPanier[i].image_url %>" alt="<%= sessionPanier[i].name %>">
+            </li>
+          <%}%>
+        </ul>
+        <!-- Paragraphe pour afficher le total du panier en utilisant reduce() -->
+        <p>Total : <%= sessionPanier.reduce((total, item) => total + (item.price * item.quantity), 0) %></p> 
+        
+        <!-- Formulaire pour effectuer le paiement avec PayPal -->
+        <form action="/pay" method="post

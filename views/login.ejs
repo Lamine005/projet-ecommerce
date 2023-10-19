@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Déclaration du jeu de caractères et des métadonnées -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Titre de la page -->
+  <title>Login</title>
+</head>
+<body>
+  <!-- Titre de la page -->
+  <h1>Login</h1>
+  <!-- Condition pour vérifier s'il y a une erreur -->
+  <% if (typeof error !== 'undefined' && error) { %>
+    <!-- Paragraphe d'erreur en cas de mot de passe ou d'email incorrect -->
+    <p class="error">Invalid password or email</p>
+  <% } %>
+
+  <!-- Formulaire de connexion -->
+  <form action="/login" method="post">
+    <!-- Champ de saisie pour l'email avec une étiquette -->
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <br>
+    <!-- Champ de saisie pour le mot de passe avec une étiquette -->
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <br>
+    <!-- Bouton pour soumettre le formulaire de connexion -->
+    <button type="submit">Login</button>
+  </form>
+  
+  <!-- Lien vers la page d'inscription si l'utilisateur n'a pas de compte -->
+  <p>Don't have an account? <a href="/register">Register</a></p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Déclaration du jeu de caractères et des métadonnées -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Titre de la page -->
+    <title>Liste de Produits</title>
+    <!-- Inclusion du script PayPal pour le paiement (client-id et devise) -->
+    <script src="https://www.paypal.com/sdk/js?client-id=Afieu65J0dq9rtJq1JvScpDFEsEcGfZvW4D1SpAG29Iq0a7QIHRCLNqia5Rf65w_F9Vw8a_0ygewA_nu_&currency=CAD"></script>
+</head>
+<body>
+    <!-- Liens de navigation -->
+    <a href="/login">Connexion</a>
+    <a href="/">Accueil</a>
+    <a href="/register">Inscription</a>
+    <div>
+        <!-- Titre de la section des produits -->
+        Produits:
+        <!-- Liste non ordonnée pour afficher les produits -->
+        <ul>
+            <!-- Boucle for pour itérer à travers les produits -->
+            <% for (let i = 0; i < resultats.length; i++) { %>
+                <!-- Élément de liste pour chaque produit -->
+                <li>
+                    <!-- Sous-titre pour afficher le nom du produit -->
+                    <h3>Nom : <%= resultats[i].name %></h3>
+                    <!-- Paragraphe pour afficher la description du produit -->
+                    <p>Description : <%= resultats[i].description %></p>
+                    <!-- Paragraphe pour afficher le prix du produit -->
+                    <p>Prix : <%= resultats[i].price %></p>
+                    <!-- Paragraphe pour afficher le SKU du produit -->
+                    <p>SKU : <%= resultats[i].sku %></p>
+                    <!-- Paragraphe pour afficher le poids du produit -->
+                    <p>Poids : <%= resultats[i].weight %></p>
+                    <!-- Image du produit avec URL provenant de l'objet resultats -->
+                    <img src="<%= resultats[i].image_url %>" alt="<%= resultats[i].name %>">
+                </li>
+            <% } %>
+        </ul>
+    </div>
+    <br>
+    <hr>
+    <br>
+</body>
+</html>

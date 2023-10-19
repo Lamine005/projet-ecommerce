@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Orders</title>
+</head>
+<body>
+  <!-- Titre principal de la page -->
+  <h1>Customer Orders</h1>
+
+  <!-- Boucle forEach pour itérer à travers les commandes -->
+  <% customerOrders.forEach(order => { %>
+    <!-- Sous-titre pour afficher l'ID de commande -->
+    <h2>Order ID: <%= order.order_id %></h2>
+    <!-- Paragraphe pour afficher la date de commande -->
+    <p>Order Date: <%= order.order_date %></p>
+
+    <!-- Liste non ordonnée pour les produits de chaque commande -->
+    <ul>
+      <!-- Boucle forEach pour itérer à travers les produits de chaque commande -->
+      <% order.products.forEach(product => { %>
+        <!-- Élément de liste pour chaque produit -->
+        <li>
+          <!-- Sous-titre pour afficher l'ID du produit -->
+          <h3>Product ID: <%= product.product_id %></h3>
+          <!-- Sous-titre pour afficher le nom du produit -->
+          <h3>Name: <%= product.name %></h3>
+          <!-- Paragraphe pour afficher la description du produit -->
+          <p>Description: <%= product.description %></p>
+          <!-- Paragraphe pour afficher le prix du produit -->
+          <p>Price: <%= product.price %></p>
+          <!-- Image du produit avec URL provenant de l'objet product -->
+          <img src="<%= product.image_url %>" alt="<%= product.name %>">
+        </li>
+      <% }) %>
+    </ul>
+
+    <!-- Ligne horizontale pour séparer les commandes -->
+    <hr>
+  <% }) %>
+</body>
+</html>
