@@ -16,11 +16,11 @@ This is an Online Shop application developed using Node.js, Express, and MySQL, 
 ### How to Run
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Lamine005/projet-boutique-online.git
+   git clone https://github.com/Lamine005/projet-ecommerce.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd projet-boutique-online
+   cd projet-ecommerce
    ```
 3. Install dependencies:
    ```bash
@@ -48,11 +48,11 @@ Ceci est une application de boutique en ligne développée en utilisant Node.js,
 ### Comment exécuter
 1. Cloner le dépôt :
    ```bash
-   git clone https://github.com/Lamine005/projet-boutique-online.git
+   git clone https://github.com/Lamine005/projet-ecommerce.git
    ```
 2. Naviguer vers le répertoire du projet :
    ```bash
-   cd projet-boutique-online
+   cd projet-ecommerce
    ```
 3. Installer les dépendances :
    ```bash
